@@ -1,11 +1,15 @@
 import yt_dlp
+
 import os
-from guardar import guardar_video
-from guardar import guardar_audio
-from guardar import guardar_tiktok
+
+from guardar import guardar_video, guardar_tiktok, guardar_audio
+
 ruta1="/storage/emulated/0/Download/musica"
+
 ruta2="/storage/emulated/0/Pictures/videos"
+
 menu=["youtube","tiktok","musica","ver archivos descargados","eliminar videos","eliminar audios","salir"]
+
 
 
 # MENU
