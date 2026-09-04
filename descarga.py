@@ -3,6 +3,8 @@ import os
 from guardar import guardar_video
 from guardar import guardar_audio
 from guardar import guardar_tiktok
+ruta1="/storage/emulated/0/Download/musica"
+ruta2="/storage/emulated/0/Pictures/videos"
 menu=["youtube","tiktok","musica","ver archivos descargados","eliminar videos","eliminar audios","salir"]
 
 
@@ -53,18 +55,18 @@ def down():
             except:
                 print("fallo al descargar ❌❌")
         elif op=="4":
-            print("")         # Editar esta ruta con la suya.
-            if not os.listdir("/storage/emulated/0/Download/musica") and not os.listdir("/storage/emulated/0/Pictures/videos"): # esta igual
+            print("")        
+            if not os.listdir(ruta1) and not os.listdir(ruta2): 
                 print("no hay canciones descargadas")
             else:
                 print("archivos descargados ✅✅")
                 print("")
-                print("canciones descargadas 🎵🎵") #editar ruta
-                for archivo in os.listdir("/storage/emulated/0/Download/musica"):
+                print("canciones descargadas 🎵🎵") 
+                for archivo in os.listdir(ruta1):
                     print(archivo)
                 print("")
-                print("videos descargados 🎥🎥") #editar ruta
-                for archivo in os.listdir("/storage/emulated/0/Pictures/videos"):
+                print("videos descargados 🎥🎥") 
+                for archivo in os.listdir(ruta2):
                     print(archivo)
 
 
@@ -75,9 +77,8 @@ def down():
 
 
         elif op=="5":
-            print("")# Editar ruta
-            ruta="/storage/emulated/0/Pictures/videos"
-            archivos=os.listdir(ruta)
+            print("")
+            archivos=os.listdir(ruta2)
             for i,archivo in enumerate(archivos,1):
                 print(f"{i}-{archivo}")
             opcion=input("elija que borrar: ")
@@ -87,7 +88,7 @@ def down():
                     archivo_a_borrar=archivos[opcion - 1]
                     confirmar=input(f"seguro que quieres borrar {archivo_a_borrar}? si/no: ")
                     if confirmar.lower()=="si":
-                       os.remove(os.path.join(ruta,archivo_a_borrar))
+                       os.remove(os.path.join(ruta2,archivo_a_borrar))
                        print(f"{archivo_a_borrar} borrado ✅")
                     elif confirmar.lower()=="no":
                         print("operacion cancelada")
@@ -103,9 +104,8 @@ def down():
 
 
         elif op=="6":
-            print("")# Editar ruta
-            ruta="/storage/emulated/0/Download/musica"
-            archivos=os.listdir(ruta)
+            print("")
+            archivos=os.listdir(ruta1)
             for i,archivo in enumerate (archivos,1):
                 print(f"{i}-{archivo}")
                 print("")
@@ -119,7 +119,7 @@ def down():
                     confirmar=input(f"seguro que quiere borrar {borrar}? si/no: ")
                     print("")
                     if confirmar.lower()=="si":
-                        os.remove(os.path.join(ruta,borrar))
+                        os.remove(os.path.join(ruta1,borrar))
                         print(f"{borrar} borrado")
                     elif confirmar.lower()=="no":
                         print("operacion cancelada")
