@@ -1,14 +1,19 @@
 DrakenTMX
 
-Descargador multimedia hecho en Python para Termux.
+Panel de descargas multimedia para Termux + Python.
 
-Permite descargar:
+Permite descargar contenido de YouTube y TikTok, convertir audio a MP3 y administrar los archivos descargados directamente desde el menú.
 
-- Videos de YouTube
-- Videos de TikTok
-- Audio de YouTube en MP3
-- Administrar los archivos descargados
-- Eliminar videos y audios desde el propio programa
+Características
+
+- Descarga de videos de YouTube
+- Descarga de videos de TikTok
+- Descarga de audio en MP3
+- Conversión automática mediante FFmpeg
+- Visualización de archivos descargados
+- Eliminación de videos y audios
+- Soporte para "cookies.txt" de YouTube
+- Diseñado para Termux en Android
 
 Requisitos
 
@@ -20,53 +25,37 @@ Requisitos
 
 Instalación
 
+Actualizá los paquetes:
+
+pkg update && pkg upgrade -y
+
+Instalá Python, Git y FFmpeg:
+
+pkg install python git ffmpeg -y
+
 Cloná el repositorio:
 
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/joakonoqui-cmd/drakentmx.git
 
 Entrá a la carpeta:
 
-cd DrakenTMX
+cd drakentmx
 
-Instalá las dependencias:
+Instalá yt-dlp:
 
-pip install -r requirements.txt
+pip install yt-dlp
 
-Dale permiso de almacenamiento a Termux:
+Dale acceso al almacenamiento a Termux:
 
 termux-setup-storage
 
-Cookies de YouTube
+Ejecutar
 
-Algunas descargas de YouTube pueden requerir autenticación debido a restricciones anti-bot.
-
-En ese caso, necesitás utilizar tus propias cookies.
-
-Guardá el archivo con el nombre:
-
-cookies.txt
-
-y colocá el archivo en:
-
-/storage/emulated/0/Download/cookies.txt
-
-DrakenTMX buscará automáticamente el archivo en Downloads.
-
-Importante
-
-NO compartas tu "cookies.txt".
-
-Las cookies pueden contener información de sesión de tu cuenta. Cada usuario debe utilizar sus propias cookies.
-
-El archivo "cookies.txt" tampoco debe subirse al repositorio.
-
-Uso
-
-Ejecutá:
+Iniciá el programa con:
 
 python descarga.py
 
-Aparecerá el menú principal:
+Aparecerá el menú:
 
 1-youtube
 2-tiktok
@@ -76,25 +65,52 @@ Aparecerá el menú principal:
 6-eliminar audios
 7-salir
 
-Elegí una opción y seguí las instrucciones del programa.
+Cookies de YouTube
+
+Algunas veces YouTube puede bloquear las solicitudes o pedir autenticación.
+
+En ese caso, DrakenTMX puede utilizar un archivo "cookies.txt" con las cookies de tu propia cuenta/sesión.
+
+Guardá el archivo con este nombre:
+
+cookies.txt
+
+y colocálo en:
+
+/storage/emulated/0/Download/cookies.txt
+
+DrakenTMX buscará automáticamente el archivo en la carpeta "Download".
+
+Importante
+
+Nunca compartas tu "cookies.txt".
+
+Este archivo puede contener información que permita acceder a tu sesión. Cada usuario debe utilizar sus propias cookies.
+
+"cookies.txt" tampoco debe subirse a GitHub.
 
 Estructura
 
-DrakenTMX/
+drakentmx/
 ├── descarga.py
 ├── guardar.py
-├── requirements.txt
 ├── README.md
 └── .gitignore
 
-El archivo "cookies.txt" es externo al proyecto y no debe incluirse en el repositorio.
+El archivo "cookies.txt" se mantiene fuera del repositorio.
 
-Aviso
+Uso responsable
 
-Este proyecto utiliza "yt-dlp" para realizar las descargas.
+DrakenTMX utiliza "yt-dlp" para realizar las descargas.
 
-Utilizá DrakenTMX respetando los términos de servicio y los derechos de autor correspondientes.
+Utilizá la herramienta respetando los términos de servicio de las plataformas y los derechos de autor correspondientes.
 
 Autor
 
-Draken
+Joako Noqui
+
+GitHub: https://github.com/joakonoqui-cmd
+
+---
+
+Si te gusta el proyecto, dejá una estrella en el repositorio.
