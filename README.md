@@ -2,60 +2,78 @@ DrakenTMX
 
 Panel de descargas multimedia para Termux + Python.
 
-Permite descargar contenido de YouTube y TikTok, convertir audio a MP3 y administrar los archivos descargados directamente desde el menú.
+DrakenTMX es una herramienta de línea de comandos desarrollada en Python para Termux en Android, diseñada para descargar y administrar contenido multimedia de distintas plataformas.
+
+Permite descargar videos de YouTube y TikTok, extraer audio en formato MP3 y administrar fácilmente los archivos descargados desde un menú interactivo.
+
+---
 
 Características
 
 - Descarga de videos de YouTube
-- Descarga de videos de TikTok (Sin marca de agua) 
-- Descarga de audio en MP3
+- Descarga de videos de TikTok
+- Descarga de contenido de TikTok sin marca de agua cuando la fuente lo permite
+- Descarga de audio en formato MP3
 - Conversión automática mediante FFmpeg
 - Visualización de archivos descargados
-- Eliminación de videos y audios
-- Soporte para "cookies.txt" de YouTube
-- Diseñado para Termux en Android
+- Eliminación de videos
+- Eliminación de archivos de audio
+- Soporte para "cookies.txt"
+- Compatible con Termux
+- Diseñado para funcionar directamente desde Android
+
+---
 
 Requisitos
+
+Antes de instalar DrakenTMX necesitás:
 
 - Android
 - Termux
 - Python 3
-- yt-dlp
+- Git
 - FFmpeg
+- yt-dlp
+
+---
 
 Instalación
 
-Actualizá los paquetes:
+1. Actualizar Termux
 
 pkg update && pkg upgrade -y
 
-Instalá Python, Git y FFmpeg:
+2. Instalar dependencias
 
 pkg install python git ffmpeg -y
 
-Cloná el repositorio:
+3. Clonar el repositorio
 
 git clone https://github.com/joakonoqui-cmd/drakentmx.git
 
-Entrá a la carpeta:
+4. Entrar al proyecto
 
 cd drakentmx
 
-Instalá yt-dlp:
+5. Instalar yt-dlp
 
 pip install yt-dlp
 
-Dale acceso al almacenamiento a Termux:
+6. Dar acceso al almacenamiento
 
 termux-setup-storage
 
-Ejecutar
+Aceptá el permiso de almacenamiento cuando Android lo solicite.
 
-Iniciá el programa con:
+---
+
+Ejecutar DrakenTMX
+
+Una vez instalado todo, ejecutá:
 
 python descarga.py
 
-Aparecerá el menú:
+Aparecerá el menú principal:
 
 1-youtube
 2-tiktok
@@ -65,35 +83,114 @@ Aparecerá el menú:
 6-eliminar audios
 7-salir
 
+Desde este menú podés descargar contenido y administrar los archivos almacenados en el dispositivo.
+
+---
+
 Cookies de YouTube
 
-Algunas veces YouTube puede bloquear las solicitudes o pedir autenticación.
+En algunas ocasiones, YouTube puede limitar las solicitudes de descarga o mostrar mensajes como:
 
-En ese caso, DrakenTMX puede utilizar un archivo "cookies.txt" con las cookies de tu propia cuenta/sesión.
+Sign in to confirm you're not a bot
 
-Guardá el archivo con este nombre:
+o solicitar información adicional para verificar la sesión.
+
+Para estos casos, DrakenTMX permite utilizar un archivo "cookies.txt" generado desde tu propia sesión de YouTube.
+
+¿Cómo descargar las cookies?
+
+Una forma sencilla desde Android es utilizar Kiwi Browser, que permite instalar extensiones de Chrome.
+
+1. Instalar Kiwi Browser
+
+Instalá Kiwi Browser en tu dispositivo Android.
+
+2. Instalar la extensión
+
+Abrí Kiwi Browser y dirigite al menú de los tres puntos ubicado en la esquina superior derecha.
+
+Entrá en:
+
+Extensiones
+
+y buscá una extensión compatible con la exportación de cookies en formato Netscape, por ejemplo una extensión de tipo:
+
+Get cookies.txt
+
+Instalala y otorgale los permisos que solicite.
+
+3. Iniciar sesión en YouTube
+
+Abrí:
+
+youtube.com
+
+Iniciá sesión normalmente con tu cuenta.
+
+4. Exportar las cookies
+
+Una vez iniciada la sesión:
+
+1. Abrí nuevamente el menú de los tres puntos.
+2. Entrá en las extensiones.
+3. Abrí la extensión para exportar cookies.
+4. Seleccioná la opción correspondiente al sitio actual ("Current Site") si está disponible.
+5. Exportá las cookies de YouTube.
+
+La extensión generará un archivo:
 
 cookies.txt
 
-y colocálo en:
+Normalmente quedará guardado en la carpeta de descargas del dispositivo.
+
+---
+
+Instalar las cookies en DrakenTMX
+
+Mové o copiá el archivo:
+
+cookies.txt
+
+a:
 
 /storage/emulated/0/Download/cookies.txt
 
+La estructura quedaría aproximadamente así:
+
+Download/
+└── cookies.txt
+
 DrakenTMX buscará automáticamente el archivo en la carpeta "Download".
 
-Importante
+Después simplemente ejecutá:
 
-Nunca compartas tu "cookies.txt".
+python descarga.py
 
-Este archivo puede contener información que permita acceder a tu sesión. Cada usuario debe utilizar sus propias cookies.
+Si las cookies son válidas, yt-dlp podrá utilizarlas durante las descargas que necesiten autenticación.
 
-"cookies.txt" tampoco debe subirse a GitHub.
+---
 
-Si no sabes descargar tus cookies, instala kiwi browser y diríjase a los tres punto de la barra superior derecha. Instala la extensión "Cookie.txt"
+Importante sobre "cookies.txt"
 
-Una vez descargado vaya a Youtube.com y y logeate con tu cuenta, luego que hayas iniciado sesion en los tres puntos de arriba a la derecha busca la extensión descargada y pon "Current Site" y listo, su cookie será añadida a su carpeta de descargas para su instalación en DrakenTMX
+Nunca compartas tu archivo "cookies.txt".
 
-Estructura
+Las cookies pueden contener información asociada a tu sesión y, dependiendo de la plataforma y de las cookies exportadas, podrían permitir acceder a una sesión autenticada.
+
+Por seguridad:
+
+- No envíes "cookies.txt" a otras personas.
+- No lo publiques en GitHub.
+- No lo subas a ningún repositorio público.
+- No lo compartas por Telegram, Discord u otras plataformas.
+- Utilizá únicamente tus propias cookies.
+
+El archivo debe mantenerse fuera del repositorio.
+
+DrakenTMX incluye ".gitignore" para evitar que "cookies.txt" sea agregado accidentalmente a Git.
+
+---
+
+Estructura del proyecto
 
 drakentmx/
 ├── descarga.py
@@ -101,20 +198,36 @@ drakentmx/
 ├── README.md
 └── .gitignore
 
-El archivo "cookies.txt" se mantiene fuera del repositorio.
+El archivo "cookies.txt" no forma parte del repositorio.
+
+---
 
 Uso responsable
 
-DrakenTMX utiliza "yt-dlp" para realizar las descargas.
+DrakenTMX utiliza ""yt-dlp"" (https://github.com/yt-dlp/yt-dlp) para realizar las descargas.
 
-Utilizá la herramienta respetando los términos de servicio de las plataformas y los derechos de autor correspondientes.
+Utilizá la herramienta de forma responsable y respetando:
+
+- Los términos de servicio de las plataformas.
+- Los derechos de autor.
+- Las leyes aplicables en tu país.
+
+El proyecto está pensado para descargar contenido al que tengas derecho de acceso o para usos permitidos por la plataforma correspondiente.
+
+---
 
 Autor
 
 Joako Noqui
 
-GitHub: https://github.com/joakonoqui-cmd
+GitHub:
+
+https://github.com/joakonoqui-cmd
+
+Si te gusta el proyecto, podés dejar una estrella en el repositorio.
 
 ---
 
-Si te gusta el proyecto, dejá una estrella en el repositorio.
+DrakenTMX
+
+Un proyecto hecho en Python + Termux, pensado para tener un panel de descargas multimedia simple y funcional directamente desde Android.
