@@ -1,137 +1,100 @@
+DrakenTMX
 
-# DrakenTMX
+Descargador multimedia hecho en Python para Termux.
 
-Panel de descargas para Termux que permite descargar contenido desde YouTube y TikTok sin marca de agua, además de convertir audio a MP3.
+Permite descargar:
 
-## ¿Qué hace?
+- Videos de YouTube
+- Videos de TikTok
+- Audio de YouTube en MP3
+- Administrar los archivos descargados
+- Eliminar videos y audios desde el propio programa
 
-DrakenTMX reúne varias funciones en un solo menú:
-
-- Descargar videos de YouTube
-- Descargar videos de TikTok
-- Descargar música en formato MP3
-- Ver los archivos descargados
-- Eliminar videos
-- Eliminar audios
-
-Los archivos se guardan directamente en el almacenamiento del dispositivo Android.
-
-## Requisitos
+Requisitos
 
 - Android
 - Termux
 - Python 3
 - yt-dlp
 - FFmpeg
-- rutas:
-- /storage/emulated/0/Download/musica
-- /storage/emulated/0/Pictures/videos
-- En caso que no tengas la misma ruta, deje indicaciones en donde editar dentro del Script 
 
-## Instalación
+Instalación
 
-Primero instala Termux y dale acceso al almacenamiento:
+Cloná el repositorio:
 
+git clone URL_DEL_REPOSITORIO
 
-```bash
+Entrá a la carpeta:
+
+cd DrakenTMX
+
+Instalá las dependencias:
+
+pip install -r requirements.txt
+
+Dale permiso de almacenamiento a Termux:
+
 termux-setup-storage
 
-Actualiza los paquetes:
+Cookies de YouTube
 
-pkg update && pkg upgrade -y
+Algunas descargas de YouTube pueden requerir autenticación debido a restricciones anti-bot.
 
-Instala Python, Git y FFmpeg:
+En ese caso, necesitás utilizar tus propias cookies.
 
-pkg install python git ffmpeg -y
+Guardá el archivo con el nombre:
 
-Clona el repositorio:
+cookies.txt
 
-git clone https://github.com/joakonoqui-cmd/drakentmx.git
+y colocá el archivo en:
 
-Entra en la carpeta:
+/storage/emulated/0/Download/cookies.txt
 
-cd drakentmx
+DrakenTMX buscará automáticamente el archivo en Downloads.
 
-Instala yt-dlp:
+Importante
 
-pip install yt-dlp
+NO compartas tu "cookies.txt".
 
-Ejecuta el programa:
+Las cookies pueden contener información de sesión de tu cuenta. Cada usuario debe utilizar sus propias cookies.
 
-python descarga.py
-
-
-
-
+El archivo "cookies.txt" tampoco debe subirse al repositorio.
 
 Uso
 
-Al iniciar el programa aparecerá un menú con las diferentes opciones.
+Ejecutá:
 
-Selecciona una opción introduciendo el número correspondiente y después proporciona el enlace del contenido que quieras descargar.
+python descarga.py
 
-Funciones
+Aparecerá el menú principal:
 
-YouTube
+1-youtube
+2-tiktok
+3-musica
+4-ver archivos descargados
+5-eliminar videos
+6-eliminar audios
+7-salir
 
-Permite descargar videos de YouTube utilizando la mejor calidad disponible.
+Elegí una opción y seguí las instrucciones del programa.
 
-TikTok
+Estructura
 
-Permite descargar videos de TikTok.
+DrakenTMX/
+├── descarga.py
+├── guardar.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 
-Música
+El archivo "cookies.txt" es externo al proyecto y no debe incluirse en el repositorio.
 
-Permite descargar el audio de un enlace y convertirlo a formato MP3.
+Aviso
 
-Ver archivos descargados
+Este proyecto utiliza "yt-dlp" para realizar las descargas.
 
-Muestra los videos y audios que se encuentran guardados en el dispositivo.
-
-Eliminar videos
-
-Permite seleccionar y eliminar videos descargados.
-
-Eliminar audios
-
-Permite seleccionar y eliminar archivos de audio descargados.
-
-Carpetas
-
-Los archivos se guardan en las siguientes ubicaciones:
-
-Videos:
-
-/storage/emulated/0/Pictures/videos
-
-Música:
-
-/storage/emulated/0/Download/musica
-
-Tecnologías utilizadas
-
-Python
-
-yt-dlp
-
-FFmpeg
-
-Termux
-
+Utilizá DrakenTMX respetando los términos de servicio y los derechos de autor correspondientes.
 
 Autor
 
-Joako Noqui
-
-GitHub: https://github.com/joakonoqui-cmd
-
-Nota
-
-Este proyecto fue creado para utilizar herramientas de descarga directamente desde Termux en Android.
-
-Utiliza las herramientas de forma responsable y respeta los derechos de autor y las condiciones de uso de cada plataforma.
-
-
----
-
-Si te gustó el proyecto, puedes dejar una estrella al repositorio.
+Draken
