@@ -89,6 +89,10 @@ Este archivo puede contener información que permita acceder a tu sesión. Cada 
 
 "cookies.txt" tampoco debe subirse a GitHub.
 
+Si no sabes descargar tus cookies, instala kiwi browser y diríjase a los tres punto de la barra superior derecha. Instala la extensión "Cookie.txt"
+
+Una vez descargado vaya a Youtube.com y y logeate con tu cuenta, luego que hayas iniciado sesion en los tres puntos de arriba a la derecha busca la extensión descargada y pon "Current Site" y listo, su cookie será añadida a su carpeta de descargas para su instalación en DrakenTMX
+
 Estructura
 
 drakentmx/
