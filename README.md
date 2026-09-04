@@ -7,7 +7,7 @@ Permite descargar contenido de YouTube y TikTok, convertir audio a MP3 y adminis
 Características
 
 - Descarga de videos de YouTube
-- Descarga de videos de TikTok
+- Descarga de videos de TikTok (Sin marca de agua) 
 - Descarga de audio en MP3
 - Conversión automática mediante FFmpeg
 - Visualización de archivos descargados
