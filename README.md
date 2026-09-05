@@ -153,11 +153,11 @@ cookies.txt
 
 a:
 
-/storage/emulated/0/Download/cookies.txt
+drakemtmx
 
 La estructura quedaría aproximadamente así:
 
-Download/
+drakentmx/
 └── cookies.txt
 
 DrakenTMX buscará automáticamente el archivo en la carpeta "Download".
@@ -196,6 +196,7 @@ drakentmx/
 ├── descarga.py
 ├── guardar.py
 ├── README.md
+├── Cookies.txt
 └── .gitignore
 
 El archivo "cookies.txt" no forma parte del repositorio.
