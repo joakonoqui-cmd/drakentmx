@@ -27,7 +27,6 @@ def down():
 
 
         if op=="1":
-            print("")
             try:
                 guardar_video()
                 print("descarga completa ✅✅") 
@@ -39,7 +38,6 @@ def down():
 
 
         elif op=="2":
-            print("")
             try:
                 guardar_tiktok()
                 print("descarga completa ✅✅")
@@ -52,7 +50,6 @@ def down():
 
 
         elif op=="3":
-            print("")
             try:
                 guardar_audio()
                 print("descargado con exito ✅✅")
@@ -81,7 +78,6 @@ def down():
 
 
         elif op=="5":
-            print("")
             archivos=os.listdir(ruta2)
             for i,archivo in enumerate(archivos,1):
                 print(f"{i}-{archivo}")
@@ -108,7 +104,6 @@ def down():
 
 
         elif op=="6":
-            print("")
             archivos=os.listdir(ruta1)
             for i,archivo in enumerate (archivos,1):
                 print(f"{i}-{archivo}")
