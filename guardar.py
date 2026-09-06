@@ -1,6 +1,7 @@
 import os
 import yt_dlp
-
+video_path="/storage/emulated/0/videos"
+audio_path="/storage/emulated/0/Download/musica"
 
 def obtener_cookies():
     if os.path.exists("cookies.txt"):
@@ -15,7 +16,7 @@ def guardar_video():
     yt_opts = {
         "format": "bestvideo+bestaudio/best",
         "merge_output_format": "mp4",
-        "outtmpl": "/storage/emulated/0/Pictures/videos/%(title)s.%(ext)s",
+        "outtmpl": f"{video_path}/%(title)s.%(ext)s",
     }
 
     cookies = obtener_cookies()
@@ -32,7 +33,7 @@ def guardar_audio():
 
     yt_opts = {
         "format": "bestaudio/best",
-        "outtmpl": "/storage/emulated/0/Download/musica/%(title)s.%(ext)s",
+        "outtmpl": f"{audio_path}/%(title)s.%(ext)s",
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
@@ -50,13 +51,13 @@ def guardar_audio():
 
 
 def guardar_tiktok():
-    os.makedirs("/storage/emulated/0/Pictures/videos", exist_ok=True)
+    os.makedirs(video_path, exist_ok=True)
 
     url = input("link de tiktok: ")
 
     yt_opts = {
         "format": "best",
-        "outtmpl": "/storage/emulated/0/Pictures/videos/%(title)s.%(ext)s",
+        "outtmpl": f"{video_path}/%(title)s.%(ext)s",
     }
 
     cookies = obtener_cookies()

@@ -6,7 +6,7 @@ from guardar import guardar_video, guardar_tiktok, guardar_audio
 
 ruta1="/storage/emulated/0/Download/musica"
 
-ruta2="/storage/emulated/0/Pictures/videos"
+ruta2="/storage/emulated/0/videos"
 
 menu=["youtube","tiktok","musica","ver archivos descargados","eliminar videos","eliminar audios","salir"]
 
@@ -78,24 +78,29 @@ def down():
 
 
         elif op=="5":
-            archivos=os.listdir(ruta2)
-            for i,archivo in enumerate(archivos,1):
-                print(f"{i}-{archivo}")
-            opcion=input("elija que borrar: ")
-            if opcion.isdigit():
-                opcion=int(opcion)
-                if 1<= opcion <=len (archivos):
-                    archivo_a_borrar=archivos[opcion - 1]
-                    confirmar=input(f"seguro que quieres borrar {archivo_a_borrar}? si/no: ")
-                    if confirmar.lower()=="si":
-                       os.remove(os.path.join(ruta2,archivo_a_borrar))
-                       print(f"{archivo_a_borrar} borrado ✅")
-                    elif confirmar.lower()=="no":
+            while True:
+                archivos=os.listdir(ruta2)
+                for i,archivo in enumerate(archivos,1):
+                    print(f"{i}-{archivo}")
+                    print("00. Salir")
+                opcion=input("elija que borrar: ")
+                if opcion.isdigit():
+                    opcion=int(opcion)
+                    if 1<= opcion <=len (archivos):
+                        archivo_a_borrar=archivos[opcion - 1]
+                        confirmar=input(f"seguro que quieres borrar {archivo_a_borrar}? si/no: ")
+                        if confirmar.lower()=="si":
+                           os.remove(os.path.join(ruta2,archivo_a_borrar))
+                           print(f"{archivo_a_borrar} borrado ✅")
+                        elif confirmar.lower()=="no":
+                            print("operacion cancelada")
+                    elif opcion==00:
                         print("operacion cancelada")
-                else:
-                    print("opcion invalida")
-            else: 
-                print("solo digitos")
+                        break
+                    else:
+                        print("opcion invalida")
+                else: 
+                    print("solo digitos")
 
 
 
@@ -104,28 +109,33 @@ def down():
 
 
         elif op=="6":
-            archivos=os.listdir(ruta1)
-            for i,archivo in enumerate (archivos,1):
-                print(f"{i}-{archivo}")
-                print("")
-
-            opcion=input("elija que borrar: ")
-            print("")
-            if opcion.isdigit():
-                opcion=int(opcion)
-                if 1<= opcion <=len(archivos):
-                    borrar=archivos[opcion -1]
-                    confirmar=input(f"seguro que quiere borrar {borrar}? si/no: ")
+            while True:
+                archivos=os.listdir(ruta1)
+                for i,archivo in enumerate (archivos,1):
+                    print(f"{i}-{archivo}")
                     print("")
-                    if confirmar.lower()=="si":
-                        os.remove(os.path.join(ruta1,borrar))
-                        print(f"{borrar} borrado")
-                    elif confirmar.lower()=="no":
+                    print("00. salir")
+
+                opcion=input("elija que borrar: ")
+                print("")
+                if opcion.isdigit():
+                    opcion=int(opcion)
+                    if 1<= opcion <=len(archivos):
+                        borrar=archivos[opcion -1]
+                        confirmar=input(f"seguro que quiere borrar {borrar}? si/no: ")
+                        print("")
+                        if confirmar.lower()=="si":
+                            os.remove(os.path.join(ruta1,borrar))
+                            print(f"{borrar} borrado")
+                        elif confirmar.lower()=="no":
+                            print("operacion cancelada")
+                    elif opcion==00:
                         print("operacion cancelada")
+                        break
+                    else:
+                        print("invalido")
                 else:
-                    print("invalido")
-            else:
-                print("solo digitos")
+                    print("solo digitos")
 
 
 
