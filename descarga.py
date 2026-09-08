@@ -60,19 +60,28 @@ def down():
                 print(f"fallo ❌❌{e}")
                 print("")
         elif op=="4":
-            print("")        
-            if not os.listdir(ruta1) and not os.listdir(ruta2): 
+            print("")       
+            if not os.path.exists(ruta1) and not os.path.exists(ruta2):
                 print("no hay canciones descargadas")
-            else:
-                print("")
+            elif not os.path.exists(ruta1):
+                print("no hay canciones,solo videos")
+            elif not os.path.exists(ruta2):
+                print("no hay videos,solo canciones")
                 for archivo in os.listdir(ruta1):
-                    print("canciones descargadas")
                     print(archivo)
+            else:  
+                if not os.listdir(ruta1) and not os.listdir(ruta2): 
+                    print("no hay canciones descargadas")
+                else:
                     print("")
-                for archivo in os.listdir(ruta2):
-                    print("videos descargados")
-                    print(archivo)
-                    print("")
+                    for archivo in os.listdir(ruta1):
+                        print("canciones descargadas")
+                        print(archivo)
+                        print("")
+                    for archivo in os.listdir(ruta2):
+                        print("videos descargados")
+                        print(archivo)
+                        print("")
 
 
 
