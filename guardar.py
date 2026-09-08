@@ -11,12 +11,14 @@ def obtener_cookies():
 
 
 def guardar_video():
+    os.makedirs(video_path,exist_ok=True)
+
     url = input("ingresar link: ")
 
     yt_opts = {
         "format": "bestvideo+bestaudio/best",
         "merge_output_format": "mp4",
-        "outtmpl": f"{video_path}/%(title)s.%(ext)s",
+        "outtmpl": f"{video_path}/%(title)s.%(id)s.%(ext)s",
     }
 
     cookies = obtener_cookies()
@@ -29,11 +31,13 @@ def guardar_video():
 
 
 def guardar_audio():
+    os.makedirs(audio_path,exist_ok=True)
+
     url = input("ingresar link: ")
 
     yt_opts = {
         "format": "bestaudio/best",
-        "outtmpl": f"{audio_path}/%(title)s.%(ext)s",
+        "outtmpl": f"{audio_path}/%(title)s.%(id)s.%(ext)s",
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
@@ -57,7 +61,7 @@ def guardar_tiktok():
 
     yt_opts = {
         "format": "best",
-        "outtmpl": f"{video_path}/%(title)s.%(ext)s",
+        "outtmpl": f"{video_path}/%(title)s.%(id)s.%(ext)s",
     }
 
     cookies = obtener_cookies()

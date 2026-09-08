@@ -30,8 +30,9 @@ def down():
             try:
                 guardar_video()
                 print("descarga completa ✅✅") 
-            except:
-                print("error al descargar 🥀")
+                print("")
+            except Exception as e:
+                print(f"error 🥀{e}")
                 print("")
 
 
@@ -41,8 +42,9 @@ def down():
             try:
                 guardar_tiktok()
                 print("descarga completa ✅✅")
-            except:
-                print("error al descargar 🥀")
+                print("")
+            except Exception as e:
+                print(f"error{e}")
                 print("")
 
 
@@ -53,22 +55,24 @@ def down():
             try:
                 guardar_audio()
                 print("descargado con exito ✅✅")
-            except:
-                print("fallo al descargar ❌❌")
+                print("")
+            except Exception as e:
+                print(f"fallo ❌❌{e}")
+                print("")
         elif op=="4":
             print("")        
             if not os.listdir(ruta1) and not os.listdir(ruta2): 
                 print("no hay canciones descargadas")
             else:
-                print("archivos descargados ✅✅")
                 print("")
-                print("canciones descargadas 🎵🎵") 
                 for archivo in os.listdir(ruta1):
+                    print("canciones descargadas")
                     print(archivo)
-                print("")
-                print("videos descargados 🎥🎥") 
+                    print("")
                 for archivo in os.listdir(ruta2):
+                    print("videos descargados")
                     print(archivo)
+                    print("")
 
 
 
@@ -79,28 +83,39 @@ def down():
 
         elif op=="5":
             while True:
+                if not os.path.exists(ruta2):
+                    print("no hay nada")
+                    break
                 archivos=os.listdir(ruta2)
+                if not archivos:
+                    print("esta vacio")
+                    break
                 for i,archivo in enumerate(archivos,1):
                     print(f"{i}-{archivo}")
-                    print("00. Salir")
-                opcion=input("elija que borrar: ")
-                if opcion.isdigit():
-                    opcion=int(opcion)
-                    if 1<= opcion <=len (archivos):
-                        archivo_a_borrar=archivos[opcion - 1]
-                        confirmar=input(f"seguro que quieres borrar {archivo_a_borrar}? si/no: ")
-                        if confirmar.lower()=="si":
-                           os.remove(os.path.join(ruta2,archivo_a_borrar))
-                           print(f"{archivo_a_borrar} borrado ✅")
-                        elif confirmar.lower()=="no":
-                            print("operacion cancelada")
-                    elif opcion==00:
-                        print("operacion cancelada")
-                        break
-                    else:
-                        print("opcion invalida")
-                else: 
-                    print("solo digitos")
+                print("00. salir")
+                opcion=input("elija que borrar: ").strip()
+                if opcion=="00":
+                    print("")
+                    break
+                try:
+                    num=int(opcion)
+                    if opcion.isdigit():
+                        if 1<= num <=len (archivos):
+                            archivo_a_borrar=archivos[num - 1]
+                            confirmar=input(f"seguro que quieres borrar {archivo_a_borrar}? si/no: ")
+                            if confirmar.lower()=="si":
+                               os.remove(os.path.join(ruta2,archivo_a_borrar))
+                               print(f"{archivo_a_borrar} borrado ✅")
+                               print("")
+                            elif confirmar.lower()=="no":
+                                print("operacion cancelada")
+                        else:
+                           print("opcion invalida")
+                    else: 
+                        print("solo digitos")
+                        print("")
+                except ValueError:
+                    print("pon un numero valido")
 
 
 
@@ -110,32 +125,47 @@ def down():
 
         elif op=="6":
             while True:
+                if not os.path.exists(ruta1):
+                    print("no hay archivos para borrar")
+                    print("")
+                    break
                 archivos=os.listdir(ruta1)
+                if not archivos:
+                    print("esta vacio")
+                    print("")
+                    break
                 for i,archivo in enumerate (archivos,1):
                     print(f"{i}-{archivo}")
                     print("")
-                    print("00. salir")
-
-                opcion=input("elija que borrar: ")
+                print("00. salir")
+                opcion=input("elija que borrar: ").strip()
                 print("")
-                if opcion.isdigit():
-                    opcion=int(opcion)
-                    if 1<= opcion <=len(archivos):
-                        borrar=archivos[opcion -1]
-                        confirmar=input(f"seguro que quiere borrar {borrar}? si/no: ")
-                        print("")
-                        if confirmar.lower()=="si":
-                            os.remove(os.path.join(ruta1,borrar))
-                            print(f"{borrar} borrado")
-                        elif confirmar.lower()=="no":
+                if opcion=="00":
+                    print("")
+                    break
+                try:
+                    num=int(opcion)
+                    if opcion.isdigit():
+                        if 1<= num <=len(archivos):
+                            borrar=archivos[num -1]
+                            confirmar=input(f"seguro que quiere borrar {borrar}? si/no: ")
+                            print("")
+                            if confirmar.lower()=="si":
+                                os.remove(os.path.join(ruta1,borrar))
+                                print(f"{borrar} borrado")
+                                print("")
+                            elif confirmar.lower()=="no":
+                                print("operacion cancelada")
+                        elif opcion==00:
                             print("operacion cancelada")
-                    elif opcion==00:
-                        print("operacion cancelada")
-                        break
+                            print("")
+                            break
+                        else:
+                            print("invalido")
                     else:
-                        print("invalido")
-                else:
-                    print("solo digitos")
+                        print("solo digitos")
+                except ValueError:
+                    print("pon un numero valido")
 
 
 
@@ -144,5 +174,7 @@ def down():
             break
         else:
             print("opcion invalida")
-down()
+
+if __name__=="__main__":
+    down()
 
