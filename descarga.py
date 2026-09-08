@@ -156,10 +156,6 @@ def down():
                                 print("")
                             elif confirmar.lower()=="no":
                                 print("operacion cancelada")
-                        elif opcion==00:
-                            print("operacion cancelada")
-                            print("")
-                            break
                         else:
                             print("invalido")
                     else:
