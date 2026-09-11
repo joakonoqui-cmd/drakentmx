@@ -219,7 +219,7 @@ El proyecto está pensado para descargar contenido al que tengas derecho de acce
 
 Autor
 
-Joako Noqui
+Joako 
 
 GitHub:
 
