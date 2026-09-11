@@ -34,6 +34,7 @@ Antes de instalar DrakenTMX necesitás:
 - Git
 - FFmpeg
 - yt-dlp
+- rich color
 
 ---
 
@@ -55,9 +56,11 @@ git clone https://github.com/joakonoqui-cmd/drakentmx.git
 
 cd drakentmx
 
-5. Instalar yt-dlp
+5. Instalar yt-dlp y rich
 
 pip install yt-dlp
+
+pip install rich
 
 6. Dar acceso al almacenamiento
 
