@@ -1,19 +1,24 @@
 import os
 import yt_dlp
+from rich import print
+from log import console,get_progress,get_ydl_opts
+from rich.console import Console
 video_path="/storage/emulated/0/videos"
 audio_path="/storage/emulated/0/Download/musica"
-
+console=Console()
 def obtener_cookies():
     if os.path.exists("cookies.txt"):
         return "cookies.txt"
 
     return None
 
-
 def guardar_video():
-    os.makedirs(video_path,exist_ok=True)
+    os.makedirs(video_path, exist_ok=True)
 
-    url = input("ingresar link: ")
+    url = console.input("[bold green]ingresar link: [/bold green]")
+
+    progress, hook = get_progress()
+    opts = get_ydl_opts(video_path, hook)
 
     yt_opts = {
         "format": "bestvideo+bestaudio/best",
@@ -22,18 +27,24 @@ def guardar_video():
     }
 
     cookies = obtener_cookies()
-
     if cookies:
         yt_opts["cookiefile"] = cookies
 
-    with yt_dlp.YoutubeDL(yt_opts) as ydl:
-        ydl.download([url])
+    final_opts = {**opts, **yt_opts}
+    final_opts["progress_hooks"] = [hook]
+
+    with progress:
+        with yt_dlp.YoutubeDL(final_opts) as ydl:
+            ydl.download([url])
 
 
 def guardar_audio():
     os.makedirs(audio_path,exist_ok=True)
 
-    url = input("ingresar link: ")
+    url = console.input("[bold green]ingresar link: [/bold green]")
+    progress,hook=get_progress()
+    opts= get_ydl_opts(audio_path,hook)
+
 
     yt_opts = {
         "format": "bestaudio/best",
@@ -49,15 +60,20 @@ def guardar_audio():
 
     if cookies:
         yt_opts["cookiefile"] = cookies
+    final_opts= {**opts,**yt_opts}
+    final_opts["progress_hooks"] = [hook]
 
-    with yt_dlp.YoutubeDL(yt_opts) as ydl:
-        ydl.download([url])
+    with progress:
+        with yt_dlp.YoutubeDL(final_opts) as ydl:
+            ydl.download([url])
 
 
 def guardar_tiktok():
     os.makedirs(video_path, exist_ok=True)
 
-    url = input("link de tiktok: ")
+    url = console.input("[bold gren]link de tiktok: [/bold green]")
+    progress,hook= get_progress()
+    opts=get_ydl_opts(video_path,hook)
 
     yt_opts = {
         "format": "best",
@@ -68,6 +84,8 @@ def guardar_tiktok():
 
     if cookies:
         yt_opts["cookiefile"] = cookies
-
-    with yt_dlp.YoutubeDL(yt_opts) as ydl:
-        ydl.download([url])
+    final_opts={**opts,**yt_opts}
+    final_opts["progress_hooks"] = [hook]
+    with progress:
+        with yt_dlp.YoutubeDL(yt_opts) as ydl:
+            ydl.download([url])
